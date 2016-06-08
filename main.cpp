@@ -220,7 +220,7 @@ int main() {
     using namespace std;
 
 	cout << string(70, '=') << endl;
-	cout << "Speed Testing for 10G Network" << endl << endl;
+	cout << "Singtel Speed Testing for 10G Network" << endl << endl;
 	cout << "Powered by iPerf3" << endl;
 	cout << string(70, '=') << endl;
 	cin.clear();
@@ -283,7 +283,7 @@ int main() {
 	p.ShowProgress(Progress::DB, 0);
     if((ret = HandleDb(params)) != 0) {
 		// Ignore DB errors - only for logging purposes.
-        //return ret;
+        //return ret;libiperf
     }
 	p.ShowProgress(Progress::RESULTS, 0);
     if((ret = HandleResults(p, net, params)) != 0) {
