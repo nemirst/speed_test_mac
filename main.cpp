@@ -18,6 +18,8 @@
 #include <fcntl.h>
 #endif
 
+#include <md5.h>
+
 #include "my_sleep.h"
 #include "conf.h"
 #include "IperfProc.h"
@@ -219,6 +221,49 @@ int HandleResults(const Progress& p, MyNetwork& n, const std::map<std::string, s
 int main() {
     using namespace std;
 
+	string config_str = ReadContents("config.txt");
+	if (config_str.length() == 0)
+	{
+		cout << endl << "ERROR: Failed to read configuration file" << endl;
+#ifdef WIN32
+		fflush(stdin);
+		_getch();
+#endif
+		return -1;
+	}
+	string config_sig = ReadContents("config.txt.sig");
+	if (config_sig.length() == 0)
+	{
+		cout << endl << "ERROR: Failed to read signature of configuration file" << endl;
+#ifdef WIN32
+		fflush(stdin);
+		_getch();
+#endif
+		return -1;
+	}
+
+	string secret = "49b8d727d50876446b4da9659aa8cde9";
+	string real_sig = md5(config_str + secret);
+	if (config_sig != real_sig)
+	{
+		cout << endl << "ERROR: wrong signature " << real_sig <<
+			" for configuration file. Changed contents?" << endl;
+#ifdef WIN32
+		fflush(stdin);
+		_getch();
+#endif
+		return -1;
+	}
+
+	if (conf_read("config.txt", conf) != 0) {
+		cout << endl << "ERROR: Failed to read configuration file" << endl;
+#ifdef WIN32
+		fflush(stdin);
+		_getch();
+#endif
+		return -1;
+	}
+
 	cout << string(70, '=') << endl;
 	cout << "Singtel Speed Testing for 10G Network" << endl << endl;
 	cout << "Powered by iPerf3" << endl;
@@ -235,10 +280,6 @@ int main() {
 
 	Progress::ShowProgress(0);
 
-    if(conf_read("config.txt", conf) != 0) {
-        cout << endl << "ERROR: Failed to read configuration file" << endl;
-        return -1;
-    }
 	Progress p(conf);
 
     MyNetwork net(conf);
