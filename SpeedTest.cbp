@@ -24,14 +24,17 @@
 					<Add option="-std=c++11" />
 					<Add directory="/Volumes/VMware Shared Folders/Freelancer/boost_1_60_0" />
 					<Add directory="/Volumes/VMware Shared Folders/Freelancer/C++_iperf3/mysql-connector-c++-1.1.7-osx10.9-x86-64bit/include" />
+					<Add directory="ConfigSignerLib" />
 				</Compiler>
 				<Linker>
 					<Add library="/Volumes/VMware Shared Folders/Freelancer/C++_iperf3/mysql-connector-c++-1.1.7-osx10.9-x86-64bit/lib/libmysqlcppconn-static.a" />
+					<Add library="ConfigSignerLib/bin/Release/libConfigSignerLib.a" />
 				</Linker>
 				<ExtraCommands>
 					<Add after="cp iperf3 bin/release" />
 					<Add after="cp libiperf.dylib bin/release" />
 					<Add after="cp config.txt bin/release" />
+					<Add after="cp config.txt.sig bin/release" />
 					<Add after="cp run_speedtest.command bin/release" />
 				</ExtraCommands>
 			</Target>
