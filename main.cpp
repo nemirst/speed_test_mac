@@ -267,8 +267,10 @@ int main() {
 	if (conf_read_base64(confBase64, conf) != 0)
 	{
 		cout << endl << "ERROR: Failed to read configuration" << endl;
+#ifdef WIN32
 		fflush(stdin);
 		_getch();
+#endif
 		return -1;
 	}
 

@@ -56,6 +56,8 @@
 		<Unit filename="MyUtils.h" />
 		<Unit filename="Progress.cpp" />
 		<Unit filename="Progress.h" />
+		<Unit filename="base64.cpp" />
+		<Unit filename="base64.h" />
 		<Unit filename="conf.cpp" />
 		<Unit filename="conf.h" />
 		<Unit filename="config.txt" />
