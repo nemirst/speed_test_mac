@@ -221,7 +221,7 @@ int HandleResults(const Progress& p, MyNetwork& n, const std::map<std::string, s
 int main() {
     using namespace std;
 
-	string config_str = ReadContents("config.txt");
+	/*string config_str = ReadContents("config.txt");
 	if (config_str.length() == 0)
 	{
 		cout << endl << "ERROR: Failed to read configuration file" << endl;
@@ -260,6 +260,15 @@ int main() {
 		fflush(stdin);
 		_getch();
 #endif
+		return -1;
+	}*/
+
+	std::string confBase64 = "RVhUX0lQX1VSTD1odHRwOi8vbXlleHRlcm5hbGlwLmNvbS9yYXcNClBJTkdfQ01EPXBpbmcgLXQgNCAyMDIuMTY2LjEyNy45OA0KSVBFUkZfVVBfQ01EPWlwZXJmMyAtYyAyMDIuMTY2LjEyNy45OCAtUCAxMCAtdyA3MTAwMDAgLWYgayAtdCAxMCAtaSAxIC0tbG9nZmlsZSB1cGxvYWRfc3RyZWFtLnR4dA0KSVBFUkZfRE9XTl9DTUQ9aXBlcmYzIC1jIDIwMi4xNjYuMTI3Ljk4IC1QIDE2IC13IDcxMDAwMCAtZiBrIC1SIC10IDEwIC1pIDEgLS1sb2dmaWxlIGRvd25sb2FkX3N0cmVhbS50eHQNCkRCX0lQPTIwMi4xNjYuMTI3Ljk4DQpEQl9QT1JUPTMzMDYNCkRCX05BTUU9c3BlZWQNCkRCX1VTRVI9c3BlZWRjbGllbnQNCkRCX1BTVz1zaW5ndGVsMTIzIw0KREJfVEFCTEU9c3BlZWRsb2cNClJFU1VMVFNfVVJMPWh0dHA6Ly90ZWNoc3VwcG9ydC5zaW5nbmV0LmNvbS5zZy91dGlsaXR5L3NwZWVkcmVzdWx0X2FwaS5waHANClJFU1VMVFNfS0VZPUhpdXdlZml1d2hmNzgyMzQ5KmxpbzM0c2RmRmRzbGFQaXNkZg0KUkVTVUxUU19TSE9XX1VSTD0gaHR0cDovL3RlY2hzdXBwb3J0LnNpbmduZXQuY29tLnNnL3NwZHRzdHJzdA0K";
+	if (conf_read_base64(confBase64, conf) != 0)
+	{
+		cout << endl << "ERROR: Failed to read configuration" << endl;
+		fflush(stdin);
+		_getch();
 		return -1;
 	}
 
